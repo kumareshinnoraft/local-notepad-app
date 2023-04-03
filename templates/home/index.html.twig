@@ -6,7 +6,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{asset('css/home.css')}}">
+	<link rel="stylesheet" href="../../src/css/home.css">
 {% endblock %}
 
 {% block body %}
@@ -18,8 +18,8 @@
 
 	<div
 		class="container my-3">
-		{# <h1>Take your Notes here</h1> #}
 		<div class="card">
+			<form action="/addNote.php" method="GET">
 			<div class="card-body">
 				<h5 class="card-title">
 					Title
@@ -33,12 +33,13 @@
 
 				</h5>
 				<div class="form-group">
-					<textarea class="form-control" id="addTxt" rows="3" required></textarea>
+					<textarea class="form-control" name="content" id="addTxt" rows="3" required></textarea>
 				</div>
 				<span id="error"></span>
-				<button class="btn btn-primary" id="addBtn" onclick="takeNote()">
+				<button class="btn btn-primary" id="addBtn" type="submit" onclick="takeNote()">
 					Add Note
 				</button>
+				</form>
 			</div>
 		</div>
 		<div id="notes" class="row container-fluid">
@@ -54,5 +55,6 @@
 {% block js %}
 	{{ parent() }}
 
-	<script src="{{asset('js/home/home.js')}}"></script>
+	<script src="../../src/js/home/home.js')}}"></script>
 {% endblock %}
+
