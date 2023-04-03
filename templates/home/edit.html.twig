@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{asset('css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<div id="leftLoader"></div>
+	<div id="rightLoader"></div>
+	<div id="loader"></div>
+
+	<div
+		class="container my-3">
+	<form action="/updateNote.php" method="GET">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">
+					Title
+
+				</h5>
+				<div class="form-group">
+						<input class="form-control shadow-sm" value={{title}} id="title" placeholder="Title..." name="title" type="text"/>
+				</div>
+				<h5 class="card-title">
+					Add a Note
+				</h5>
+				<div class="form-group">
+					<textarea class="form-control" id="addTxt" rows="3" name="content"  required>{{content}}</textarea>
+				</div>
+				<span id="error"></span>
+				<button class="btn btn-primary" id="updateBtn"  type="submit"  onclick="updateNote({{id}})">
+					Update
+				</button>
+        <button class="btn btn-alert" id="deleteBtn" onclick="deleteNote({{id}})">
+					Delete
+				</button>
+				</form>
+
+			</div>
+		</div>
+		<div id="notes" class="row container-fluid">
+			<ul class="list-group list-notes">
+
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+{% block js %}
+	{{ parent() }}
+	<script src="{{asset('js/home/edit.js')}}"></script>
+{% endblock %}
