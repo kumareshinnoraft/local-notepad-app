@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{asset('css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<div id="leftLoader"></div>
+	<div id="rightLoader"></div>
+	<div id="loader"></div>
+
+	<div
+		class="container my-3">
+		{# <h1>Take your Notes here</h1> #}
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">
+					Title
+
+				</h5>
+				<div class="form-group">
+						<input class="form-control shadow-sm" id="title" placeholder="Title..." name="title" type="text"/>
+				</div>
+				<h5 class="card-title">
+					Add a Note
+
+				</h5>
+				<div class="form-group">
+					<textarea class="form-control" id="addTxt" rows="3" required></textarea>
+				</div>
+				<span id="error"></span>
+				<button class="btn btn-primary" id="addBtn" onclick="takeNote()">
+					Add Note
+				</button>
+			</div>
+		</div>
+		<div id="notes" class="row container-fluid">
+			<ul class="list-group list-notes">
+
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+{% block js %}
+	{{ parent() }}
+
+	<script src="{{asset('js/home/home.js')}}"></script>
+{% endblock %}
